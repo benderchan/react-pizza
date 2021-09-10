@@ -21,7 +21,7 @@ const Home = () => {
             isLoaded: state.pizzas.isLoaded,
             sortBy: state.filters.sortBy,
             category: state.filters.category,
-            cartItems: state.cart.items,
+            cartItems: state.cart.pizzas,
         }
     })
 
@@ -29,7 +29,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(fetchPizzas(sortBy, category))
-    }, [category, sortBy])
+    }, [category, sortBy, dispatch])
 
     const onSelectCategory = (index) => {
         dispatch(setCategory(index))
@@ -57,7 +57,7 @@ const Home = () => {
                               {...pizza}
                               key={pizza.id}
                               isLoading={true}
-                              cartItemsCount={cartItems[pizza.id] && cartItems[pizza.id].items.length}
+                              cartItemsCount={cartItems[pizza.id] && cartItems[pizza.id].length}
                           />
                       ))
                     : Array(12)

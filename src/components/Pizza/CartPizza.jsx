@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '..'
 
-function CartPizza({ id, name, type, size, totalPrice, totalCount, removePizzaCart, onMinusItem, onPlusItem }) {
+function CartPizza({ id, name, type, size, total, itemsCount, removePizzaCart, onMinusItem, onPlusItem }) {
     const handleRemovePizza = () => {
         removePizzaCart(id)
     }
@@ -41,7 +41,7 @@ function CartPizza({ id, name, type, size, totalPrice, totalCount, removePizzaCa
                         />
                     </svg>
                 </div>
-                <b>{totalCount}</b>
+                <b>{itemsCount}</b>
                 <div onClick={handlePlus} className='button button--outline button--circle cart__item-count-plus'>
                     <svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -56,7 +56,7 @@ function CartPizza({ id, name, type, size, totalPrice, totalCount, removePizzaCa
                 </div>
             </div>
             <div className='cart__item-price'>
-                <b>{totalPrice} ₽</b>
+                <b>{total} ₽</b>
             </div>
             <div className='cart__item-remove'>
                 <Button onClick={handleRemovePizza} classname='button--circle' outline>

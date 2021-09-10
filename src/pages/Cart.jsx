@@ -8,9 +8,10 @@ import { Link } from 'react-router-dom'
 import { Button } from '../components'
 
 const Cart = () => {
-    const { totalPrice, itemsCount, items } = useSelector(({ cart }) => cart)
-    const pizzas = Object.keys(items).map((key) => {
-        return items[key].items[0]
+    const { totalPrice, itemsCount, pizzas } = useSelector(({ cart }) => cart)
+    const allPizzas = Object.keys(pizzas).map((key) => {
+        console.log(pizzas[key][0])
+        return pizzas[key][0]
     })
 
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Cart = () => {
     }
 
     const onOrderClick = () => {
-        console.log('Your order', items)
+        console.log('Your order', pizzas)
     }
 
     return (
@@ -115,18 +116,15 @@ const Cart = () => {
                         </div>
                     </div>
                     <div className='content__items'>
-                        {pizzas.map((pizza, index) => (
+                        {allPizzas.map((pizza, index) => (
                             <CartPizza
+                                {...pizza}
                                 onPlusItem={onPlusItem}
                                 onMinusItem={onMinusItem}
-                                id={pizza.id}
                                 key={index}
                                 removePizzaCart={removePizzaCart}
-                                name={pizza.name}
-                                size={pizza.size}
-                                type={pizza.type}
-                                totalPrice={items[pizza.id].totalPrice}
-                                totalCount={items[pizza.id].items.length}
+                                total={pizzas[pizza.id].reduce((sum, obj) => obj.price + sum, 0)}
+                                itemsCount={pizzas[pizza.id].length}
                             />
                         ))}
                     </div>

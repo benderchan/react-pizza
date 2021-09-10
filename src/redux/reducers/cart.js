@@ -1,88 +1,42 @@
+import produce from 'immer'
+import { reduce, map } from 'lodash'
+
 const initialState = {
-    items: {},
+    pizzas: {},
     totalPrice: 0,
     itemsCount: 0,
 }
 
-const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0)
-
 const cart = (state = initialState, action) => {
-    switch (action.type) {
-        case 'ADD_PIZZA_CART': {
-            const currentPizzaItems = !state.items[action.payload.id]
-                ? [action.payload]
-                : [...state.items[action.payload.id].items, action.payload]
-
-            const newItems = {
-                ...state.items,
-                [action.payload.id]: {
-                    items: currentPizzaItems,
-                    totalPrice: getTotalPrice(currentPizzaItems),
-                },
-            }
-            const items = Object.values(newItems).map((obj) => obj.items)
-            const allPizzas = [].concat.apply([], items)
-            const totalPrice = getTotalPrice(allPizzas)
-            return {
-                ...state,
-                items: newItems,
-                itemsCount: allPizzas.length,
-                totalPrice: totalPrice,
-            }
-        }
-        case 'CLEAR_CART': {
-            return {
-                totalPrice: 0,
-                itemsCount: 0,
-                items: {},
-            }
-        }
-        case 'REMOVE_CART_ITEM': {
-            const newItems = {
-                ...state.items,
-            }
-            const currentTotalPrice = newItems[action.payload].totalPrice
-            const currentTotalCount = newItems[action.payload].items.length
-            delete newItems[action.payload]
-            return {
-                ...state,
-                items: newItems,
-                totalPrice: state.totalPrice - currentTotalPrice,
-                itemsCount: state.itemsCount - currentTotalCount,
-            }
-        }
-        case 'PLUS_CART_ITEMS': {
-            const newItems = [...state.items[action.payload].items, state.items[action.payload].items[0]]
-            return {
-                ...state,
-                items: {
-                    ...state.items,
-                    [action.payload]: {
-                        items: newItems,
-                        totalPrice: getTotalPrice(newItems),
-                    },
-                },
-            }
+    return produce(state, (draft) => {
+        switch (action.type) {
+            case 'ADD_PIZZA_CART':
+                if (!draft.pizzas[action.payload.id]) {
+                    draft.pizzas[action.payload.id] = []
+                }
+                draft.pizzas[action.payload.id].push(action.payload)
+                break
+            case 'PLUS_CART_ITEMS':
+                draft.pizzas[action.payload].push(draft.pizzas[action.payload][0])
+                break
+            case 'MINUS_CART_ITEMS':
+                if (draft.pizzas[action.payload].length > 1) {
+                    draft.pizzas[action.payload].shift()
+                }
+                break
+            case 'REMOVE_CART_ITEM':
+                delete draft.pizzas[action.payload]
+                break
+            case 'CLEAR_CART':
+                draft.pizzas = {}
+                break
+            default:
         }
 
-        case 'MINUS_CART_ITEMS': {
-            const oldItems = state.items[action.payload].items
-            const newItems = oldItems.length > 1 ? state.items[action.payload].items.slice(1) : oldItems
-            return {
-                ...state,
-                items: {
-                    ...state.items,
-                    [action.payload]: {
-                        items: newItems,
-                        totalPrice: getTotalPrice(newItems),
-                    },
-                },
-            }
-        }
-
-        default:
-            return state
-    }
+        const result = reduce(map(draft.pizzas), (prev, cur) => prev.concat(cur), [])
+        draft.totalPrice = result.reduce((total, obj) => obj.price + total, 0)
+        draft.itemsCount = result.length
+    })
 }
 
 export default cart
