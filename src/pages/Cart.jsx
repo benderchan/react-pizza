@@ -10,7 +10,6 @@ import { Button } from '../components'
 const Cart = () => {
     const { totalPrice, itemsCount, pizzas } = useSelector(({ cart }) => cart)
     const allPizzas = Object.keys(pizzas).map((key) => {
-        console.log(pizzas[key][0])
         return pizzas[key][0]
     })
 
