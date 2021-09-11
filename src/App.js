@@ -29,6 +29,7 @@ function App() {
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <Button onClick={toggleTheme}>Toggle theme</Button>
+            <div id='google_translate_element'></div>
             <GlobalStyle />
 
             <div className='wrapper'>
