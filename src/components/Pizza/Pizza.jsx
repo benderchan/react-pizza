@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { Button } from '..'
 
 function Pizza({ id, name, price, imageUrl, sizes, types, dispatch, cartItemsCount }) {
@@ -77,17 +76,6 @@ function Pizza({ id, name, price, imageUrl, sizes, types, dispatch, cartItemsCou
             </div>
         </div>
     )
-}
-
-Pizza.propTypes = {
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
-    types: PropTypes.arrayOf(PropTypes.number).isRequired,
-}
-
-Pizza.defaultProps = {
-    types: [],
 }
 
 export default Pizza

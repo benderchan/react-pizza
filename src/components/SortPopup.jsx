@@ -66,7 +66,4 @@ const SortPopup = React.memo(({ sortItems, sortBy, onSortClick }) => {
     )
 })
 
-SortPopup.defaultProps = {
-    item: [],
-}
 export default SortPopup

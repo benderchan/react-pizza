@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Categories, SortPopup, Pizza, PizzaLoader } from '../components'
@@ -24,9 +23,6 @@ const Home = () => {
             cartItems: state.cart.pizzas,
         }
     })
-
-    
-
 
     const dispatch = useDispatch()
 
@@ -69,10 +65,6 @@ const Home = () => {
             </div>
         </div>
     )
-}
-
-Home.propTypes = {
-    pizzas: PropTypes.array,
 }
 
 export default Home
