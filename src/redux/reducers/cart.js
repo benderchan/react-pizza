@@ -5,7 +5,6 @@ const initialState = {
     pizzas: {},
     totalPrice: 0,
     itemsCount: 0,
-    sfsf: 1,
 }
 
 const cart = (state = initialState, action) => {
