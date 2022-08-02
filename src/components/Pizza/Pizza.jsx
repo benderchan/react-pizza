@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Button } from '..'
 
 function Pizza({ id, name, price, imageUrl, sizes, types, dispatch, cartItemsCount }) {
-    const aviableTypes = ['тонкое', 'традиционное']
+    const aviableTypes = ['thin', 'traditional']
     const aviableSizes = [26, 30, 40]
     const [activeSize, setActiveSize] = useState(0)
     const [activeType, setActiveType] = useState(types[0])
@@ -56,13 +56,13 @@ function Pizza({ id, name, price, imageUrl, sizes, types, dispatch, cartItemsCou
                                 disabled: !sizes.includes(size),
                             })}
                         >
-                            {size} см.
+                            {size} cm.
                         </li>
                     ))}
                 </ul>
             </div>
             <div className='pizza-block__bottom'>
-                <div className='pizza-block__price'>от {price} ₽</div>
+                <div className='pizza-block__price'>from {price} ₽</div>
                 <Button onClick={handleAddPizza} classname='button--add' outline>
                     <svg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
