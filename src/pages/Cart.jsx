@@ -111,7 +111,7 @@ const Cart = () => {
                                 />
                             </svg>
 
-                            <span onClick={onClearClick}>Очистить корзину</span>
+                            <span onClick={onClearClick}>Clear cart</span>
                         </div>
                     </div>
                     <div className='content__items'>
@@ -130,10 +130,10 @@ const Cart = () => {
                     <div className='cart__bottom'>
                         <div className='cart__bottom-details'>
                             <span>
-                                Order: <b>{itemsCount} шт.</b>
+                                Order: <b>{itemsCount} pcs.</b>
                             </span>
                             <span>
-                               Total: <b>{totalPrice} ₽</b>
+                               Total: <b>{totalPrice} $</b>
                             </span>
                         </div>
                         <div className='cart__bottom-buttons'>

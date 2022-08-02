@@ -44,7 +44,7 @@ const SortPopup = React.memo(({ sortItems, sortBy, onSortClick }) => {
                         fill='#2C2C2C'
                     />
                 </svg>
-                <b>Сортировка по:</b>
+                <b>Sort by:</b>
                 <span onClick={openModalSort}>{activeSortItem}</span>
             </div>
             {showPopup && (

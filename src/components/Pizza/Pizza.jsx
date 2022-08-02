@@ -71,7 +71,7 @@ function Pizza({
 				</ul>
 			</div>
 			<div className='pizza-block__bottom'>
-				<div className='pizza-block__price'>from {price} ₽</div>
+				<div className='pizza-block__price'>from {price} $</div>
 				<Button onClick={handleAddPizza} classname='button--add' outline>
 					<svg
 						width='12'
