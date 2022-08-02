@@ -130,7 +130,7 @@ const Cart = () => {
                     <div className='cart__bottom'>
                         <div className='cart__bottom-details'>
                             <span>
-                                Всего пицц: <b>{itemsCount} шт.</b>
+                                Order: <b>{itemsCount} шт.</b>
                             </span>
                             <span>
                                Total: <b>{totalPrice} ₽</b>
