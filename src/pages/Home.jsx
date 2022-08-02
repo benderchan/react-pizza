@@ -6,12 +6,12 @@ import { setCategory, setSortBy } from '../redux/actions/filters'
 import { fetchPizzas } from '../redux/actions/pizzas'
 
 const sortItems = [
-    { name: 'популярности', type: 'popular' },
-    { name: 'цене', type: 'price' },
-    { name: 'алфавиту', type: 'name' },
+    { name: 'popular', type: 'popular' },
+    { name: 'price', type: 'price' },
+    { name: 'name', type: 'name' },
 ]
 
-const categories = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+const categories = ['Meat', 'Vegan', 'Grill', 'Spicy', 'Closed']
 
 const Home = () => {
     const { items, isLoaded, sortBy, category, cartItems } = useSelector((state) => {
