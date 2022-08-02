@@ -18,7 +18,7 @@ const Header = () => {
                         <img width='38' src={logoSvg} alt='Pizza logo' />
                         <div>
                             <h1>React Pizza</h1>
-                            <p>самая вкусная пицца во вселенной</p>
+                            <p>best pizza ever</p>
                         </div>
                     </div>
                 </Link>
@@ -26,7 +26,7 @@ const Header = () => {
                 <div className='header__cart'>
                     <Link className='button button--cart' to='/cart'>
                         <Button classname='button--cart'>
-                            <span>{totalPrice} ₽</span>
+                            <span>{totalPrice} $</span>
                             <div className='button__delimiter'></div>
                             <svg
                                 width='18'
