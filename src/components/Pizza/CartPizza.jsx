@@ -21,7 +21,7 @@ function CartPizza({ id, name, type, size, total, itemsCount, removePizzaCart, o
             <div className='cart__item-info'>
                 <h3>{name}</h3>
                 <p>
-                    {type} dough, {size} см.
+                    {type} dough, {size} cm.
                 </p>
             </div>
             <div className='cart__item-count'>
@@ -52,7 +52,7 @@ function CartPizza({ id, name, type, size, total, itemsCount, removePizzaCart, o
                 </div>
             </div>
             <div className='cart__item-price'>
-                <b>{total} ₽</b>
+                <b>{total} $</b>
             </div>
             <div className='cart__item-remove'>
                 <Button onClick={handleRemovePizza} classname='button--circle' outline>
