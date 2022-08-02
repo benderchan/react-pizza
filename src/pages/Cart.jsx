@@ -71,7 +71,7 @@ const Cart = () => {
                                     strokeLinejoin='round'
                                 />
                             </svg>
-                            Корзина
+                            Cart
                         </h2>
                         <div className='cart__clear'>
                             <svg
@@ -133,7 +133,7 @@ const Cart = () => {
                                 Всего пицц: <b>{itemsCount} шт.</b>
                             </span>
                             <span>
-                                Сумма заказа: <b>{totalPrice} ₽</b>
+                               Total: <b>{totalPrice} ₽</b>
                             </span>
                         </div>
                         <div className='cart__bottom-buttons'>
@@ -155,11 +155,11 @@ const Cart = () => {
                                 </svg>
 
                                 <Link to='/'>
-                                    <span>Вернуться назад</span>
+                                    <span>Back</span>
                                 </Link>
                             </a>
                             <Button onClick={onOrderClick} classname='button pay-btn'>
-                                <span>Оплатить сейчас</span>
+                                <span>Pay now</span>
                             </Button>
                         </div>
                     </div>
@@ -167,16 +167,16 @@ const Cart = () => {
             ) : (
                 <div className='cart cart--empty'>
                     <h2>
-                        Корзина пустая <i>😕</i>
+                       Cart is empty <i>😕</i>
                     </h2>
                     <p>
-                        Вероятней всего, вы не заказывали ещё пиццу.
+                        You should order pizza.
                         <br />
-                        Для того, чтобы заказать пиццу, перейди на главную страницу.
+                        Go back in menu.
                     </p>
                     <img src={emptyCard} alt='Empty cart' />
                     <Link to='/' className='button button--black'>
-                        <span>Вернуться назад</span>
+                        <span>Go back</span>
                     </Link>
                 </div>
             )}
